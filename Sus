@@ -178,5 +178,5 @@ local confirmConnection; confirmConnection = Plr.PlayerGui.MainUI.ItemShop.Confi
 	confirmConnection:Disconnect()
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo'))()
-
+end)
 return CustomShop

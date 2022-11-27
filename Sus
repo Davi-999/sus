@@ -159,6 +159,24 @@ CustomShop.CreateItem = function(tool, config)
 end
 
 -- Scripts
+
+local ncall; ncall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+	local args = {...}
+
+	if not checkcaller() and getnamecallmethod() == "FireServer" and tostring(self) == "PreRunShop" then
+		for i, v in next, args[1] do
+			if table.find(BlacklistedNames, v) then
+				table.remove(args[1], i)
+			end
+		end
+	end
+
+	return ncall(self, unpack(args))
+end))
+
+local confirmConnection; confirmConnection = Plr.PlayerGui.MainUI.ItemShop.Confirm.MouseButton1Down:Connect(function()
+	confirmConnection:Disconnect()
+
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo'))()
 
 return CustomShop
